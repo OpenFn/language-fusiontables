@@ -23,6 +23,24 @@ export function post({ username, password, body, url }) {
   })
 }
 
+// THIS IS THE CLIENT.JS For CartoDb... it works for posting sql queries.
+// export function post({ apiKey, body, url }) {
+//   return new Promise((resolve, reject) => {
+//     request.get(url)
+//     .query({ q: body })
+//     .query({ api_key: apiKey })
+//     .end((error, res) => {
+//       if (!!error || !res.ok) {
+//         reject( error )
+//       }
+//
+//       resolve( res )
+//     })
+//
+//   })
+// }
+
+
 // So how this works is you first add a request- which could be de Delete, Head, Post, Put. All of these commands must be passed a URL on which to act. So the url
 //given here as the argument of the Post command will be where
 // When making a post, we must specify what kind of post it is. As a short-hand the .type() method is also available,
