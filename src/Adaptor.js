@@ -40,6 +40,7 @@ export function row(rowData) {
 
   return state => {
     const body = expandReferences(rowData)(state);
+    // const body = `const body = INSERT INTO <table_id> (<column_name> {, <column_name>}*) VALUES (<value> {, <value>}*){ {;INSERT INTO <table_id> (<column_name> {, <column_name>}*) VALUES (<value> {, <value>}*)}*`;
 
     const { username, password, apiUrl } = state.configuration;
 
@@ -50,39 +51,14 @@ export function row(rowData) {
     console.log("Posting row data:");
     console.log(body)
 
-    return post({ username, password, body, url })
+    // return post({ username, password, body, url, clientID, scope})
+    return post({ username, password, body, url})
     .then((result) => {
       console.log("Success:", result);
       return { ...state, references: [ result, ...state.references ] }
     })
 
   }
-}
-
-// Send data values using the dataValueSets resource
-export function dataValueSet(dataValueSetData) {
-
-  return state => {
-    const body = expandReferences(dataValueSetData)(state);
-
-    const { username, password, apiUrl } = state.configuration;
-
-    const url = resolveUrl(apiUrl + '/', 'api/dataValueSets')
-
-    console.log("Posting data value set:");
-    console.log(body)
-
-    return post({ username, password, body, url })
-    .then((result) => {
-      console.log("Success:", result);
-      return { ...state, references: [ result, ...state.references ] }
-    })
-
-  }
-}
-
-export function dataElement(key, value) {
-  return { "dataElement": key, "value": value }
 }
 
 export {
