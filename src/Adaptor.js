@@ -27,25 +27,27 @@ export function execute(...operations) {
 }
 
 /**
- * Create an event
+ * Create a row
  * @example
  * execute(
  *   event(data)
  * )(state)
  * @constructor
- * @param {object} eventData - Payload data for the event
+ * @param {object} rowData - Payload data for the Row
  * @returns {Operation}
  */
-export function event(eventData) {
+export function row(rowData) {
 
   return state => {
-    const body = expandReferences(eventData)(state);
+    const body = expandReferences(rowData)(state);
 
     const { username, password, apiUrl } = state.configuration;
 
+    //same
+    // where are these being entered from- username, password, apiURL
     const url = resolveUrl(apiUrl + '/', 'api/events')
 
-    console.log("Posting event:");
+    console.log("Posting row data:");
     console.log(body)
 
     return post({ username, password, body, url })
