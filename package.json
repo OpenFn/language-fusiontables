@@ -17,7 +17,8 @@
     "JSONPath": "^0.10.0",
     "language-common": "github:openfn/language-common",
     "lodash-fp": "^0.10.2",
-    "superagent": "^1.7.2"
+    "superagent": "^1.7.2",
+    "superagent-oauth": "^0.2.3"
   },
   "devDependencies": {
     "assertion-error": "^1.0.1",
